@@ -7,7 +7,7 @@ const path = require('path');
 const PORT = 3000;
 const app = express();
 
-// Middleware
+// middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'secret-key',
@@ -22,11 +22,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// Set EJS as the templating engine
+// set EJS as the templating engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Routes
+// routes
 app.get('/', (req, res) => {
     res.render('index', { user: req.session.user });
 });
@@ -62,7 +62,7 @@ bcrypt.setRandomFallback((len) => {
     return buf.map(() => Math.floor(Math.random() * 256));
   });
 
-// Dummy user data (for demo purposes)
+// dummy user data (for demo purposes)
 const users = [
   {
       id: 1,
@@ -85,7 +85,7 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Start the server
+// start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
